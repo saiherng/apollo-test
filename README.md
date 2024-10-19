@@ -4,5 +4,6 @@ Install Selenium
 
 $ pip install selenium
 
-RUN Program
+Run Program
+
 $ python apollo_test.py
