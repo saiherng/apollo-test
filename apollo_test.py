@@ -11,7 +11,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 class AppoloSeleniumDriver():
 
     def __init__(self):
@@ -26,7 +25,6 @@ class AppoloSeleniumDriver():
     def login(self, email):
 
         login_box = self.driver.find_element(By.XPATH,'//*[@id="root"]/div/form/input')
-        
         self.driver.execute_script("arguments[0].scrollIntoView();", login_box)
         time.sleep(1)
 
