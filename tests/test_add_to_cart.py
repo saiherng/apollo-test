@@ -14,27 +14,32 @@ sys.path.append('..')
 
 from ApolloDriver import ApolloSeleniumDriver
 
-class TestLogin(unittest.TestCase):
+class TestAddToCart(unittest.TestCase):
 
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with your path to ChromeDriver
-        self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000')
-       
+        self.driver = ApolloSeleniumDriver("http://127.0.0.1:3000")
+        
+      
 
-    def test_valid_email_login(self):
-    
+    def test_add_to_cart(self):
+
         self.email = "test@gmail.com"
         self.driver.login(self.email)
-        
 
-        #Get email account banner
-        self.email_banner = self.driver.find_element(By.XPATH,'//*[@id="root"]/div[2]/div/div/h5')
+        #clicks on rocket
+        self.path = '//*[@id="root"]/div[2]/a[1]'
+        self.driver.select_rocket(self.path)
 
-        #Test
-        self.assertEqual(self.email, self.email_banner.text)
+        time.sleep(2)
+        #add to cart
+        self.driver.add_to_cart()
+        time.sleep(2)
 
-    
+        self.driver.go_to_cart()
+        time.sleep(10)
+
        
     def tearDown(self):
         self.driver.quit()
