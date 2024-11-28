@@ -10,26 +10,26 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class ApolloSeleniumDriver():
 
-    def __init__(self):
+    def __init__(self, link):
 
         self.driver = webdriver.Chrome()
         self.driver.start_devtools()  
         # self.action = ActionChains(self.driver)
 
-        self.driver.get('http://127.0.0.1:3000')
+        self.driver.get(link)
 
 
-    def find_element(self, by, value, timeout=2):
+    def find_element(self, by, value, timeout=1):
 
         return WebDriverWait(self.driver, timeout).until(
             EC.presence_of_element_located((by, value))
         )
     
-    def execute_script(self,script, target):
 
+    def execute_script(self,script, target):
         return self.driver.execute_script(script,target)
     
-    
+
     def login(self, email):
 
         login_box = self.find_element(By.XPATH,'//*[@id="root"]/div/form/input')
@@ -47,7 +47,7 @@ class ApolloSeleniumDriver():
     def select_rocket(self, path):
 
         sentinal = self.driver.find_element(By.XPATH, path)
-        self.driver.execute_script("arguments[0].scrollIntoView();", sentinal)
+        #self.driver.execute_script("arguments[0].scrollIntoView();", sentinal)
    
         time.sleep(1)
         sentinal.click()
@@ -56,7 +56,8 @@ class ApolloSeleniumDriver():
     def add_to_cart(self):
 
         button = self.driver.find_element(By.CSS_SELECTOR,'button[data-testid="action-button"]')
-        self.driver.execute_script("arguments[0].scrollIntoView();", button)
+        #self.driver.execute_script("arguments[0].scrollIntoView();", button)
+
         button.click()
         
 
@@ -86,49 +87,11 @@ class ApolloSeleniumDriver():
         logout_button = self.driver.find_element(By.CSS_SELECTOR,'button[data-testid="logout-button"]')
         logout_button.click()
 
+    
+    
+
+
     def quit(self):
         self.driver.quit()
-
-
-
-# def main():
-
-#     driver = AppoloSeleniumDriver()
-
-#     #COPY XPATH from browser and paste into this variable
-#     rocket_xpath = '//*[@id="root"]/div[2]/a[6]'
-
-#     email = 'test2@gmail.com'
-
-#     time.sleep(2)
-#     driver.login(email)
-
-#     time.sleep(2)
-#     driver.select_rocket(rocket_xpath)
-
-#     time.sleep(2)
-#     driver.add_to_cart()
-
-#     time.sleep(2)
-#     driver.go_to_cart()
-
-#     time.sleep(5)
-#     driver.book_all()
-
-#     time.sleep(1)
-#     driver.go_to_profile()
-
-#     time.sleep(2)
-#     driver.logout()
-
-#     time.sleep(2)
-#     driver.quit()
-
-
-
-# if __name__ == '__main__':
-#     main()
-
-
 
 
