@@ -1,3 +1,4 @@
+import time
 import unittest
 
 from selenium.webdriver.common.by import By
@@ -25,6 +26,8 @@ class TestLoginInputUnitTest(unittest.TestCase):
         login_box.send_keys(email)
 
         login_box.submit()
+
+        time.sleep(1)
 
         return self.driver.getLocalStorage('userId')
 
