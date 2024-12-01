@@ -4,8 +4,10 @@ import os
 
 utils_path = os.path.abspath('tests')
 utils_path_unit = os.path.abspath('tests/unit_tests')
+utils_path_integration = os.path.abspath('tests/integration_tests')
 sys.path.append(utils_path)
 sys.path.append(utils_path_unit)
+sys.path.append(utils_path_integration)
 
 import unittest
 
@@ -16,6 +18,8 @@ from test_home_button import TestHomeButtonUnitTest
 from test_cart_button import TestCartButtonUnitTest
 from test_profile_button import TestProfileButtonUnitTest
 from test_logout_button import TestLogoutButtonUnitTest
+from test_add_remove_cart import TestAddRemoveCartIntegrationTest
+
 # from test_login import TestLogin
 # from test_add_to_cart import TestAddToCart
 
@@ -34,15 +38,20 @@ def suite():
     # EC10: Testing of Footer Button Home
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestHomeButtonUnitTest))
     
-    # EC11: Testing of Footer Button Home
+    # EC11: Testing of Footer Button Cart
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCartButtonUnitTest))
     
-    # EC12: Testing of Footer Button Home
+    # EC12: Testing of Footer Button Profile
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestProfileButtonUnitTest))
     
-    # EC13: Testing of Footer Button Home
+    # EC13: Testing of Footer Button Logout
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogoutButtonUnitTest))
-    
+
+    # Integration Tests
+
+    # EC14-15: Testing of add to cart integration
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddRemoveCartIntegrationTest))
+
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddToCart))
 
