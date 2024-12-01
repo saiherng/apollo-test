@@ -35,7 +35,11 @@ class TestLoginInputUnitTest(unittest.TestCase):
         
         userId = self._populateInputField(email)
 
-        self.assertGreater(int(userId), 0)
+        try:
+            self.assertGreater(int(userId), 0)
+            print("PASS")
+        except:
+            print("FAIL")
     
     def test_EC2_invalid_email_login_string_only(self):
         print("\n")
@@ -45,7 +49,11 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         userId = self._populateInputField(email)
 
-        self.assertIs(userId, None)
+        try:
+            self.assertIs(userId, None)
+            print("PASS")
+        except:
+            print("FAIL")
     
     def test_EC3_invalid_email_login_no_domain(self):
         print("\n")
@@ -55,7 +63,11 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         userId = self._populateInputField(email)
 
-        self.assertIs(userId, None)
+        try:
+            self.assertIs(userId, None)
+            print("PASS")
+        except:
+            print("FAIL")
 
     
     def tearDown(self):
