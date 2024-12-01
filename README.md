@@ -6,4 +6,4 @@ Install Selenium
 
 Navigate to tests folder
 
-`$ python appollo_test.py`
+`$ python test_suite.py`
