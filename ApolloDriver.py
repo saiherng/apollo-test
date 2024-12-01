@@ -38,9 +38,7 @@ class ApolloSeleniumDriver():
         return self.driver.execute_script(script,target)
     
 
-    def login(self):
-
-        email = "test@gmail.com"
+    def login(self, email):
         
         login_box = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
         
@@ -49,9 +47,6 @@ class ApolloSeleniumDriver():
         login_box.send_keys(email)
 
         login_box.submit()
-
-        self.driver.implicitly_wait(1)
-
 
     def select_rocket(self, path):
 
