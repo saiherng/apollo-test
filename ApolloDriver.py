@@ -36,18 +36,19 @@ class ApolloSeleniumDriver():
         return self.driver.execute_script(script,target)
     
 
-    def login(self, email):
+    def login(self):
 
-        login_box = self.find_element(By.XPATH,'//*[@id="root"]/div/form/input')
+        email = "test@gmail.com"
+        
+        login_box = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
         
         self.execute_script("arguments[0].scrollIntoView();", login_box)
-        time.sleep(1)
 
         login_box.send_keys(email)
-        time.sleep(1)
 
         login_box.submit()
 
+        self.driver.implicitly_wait(1)
 
 
     def select_rocket(self, path):
