@@ -10,6 +10,7 @@ sys.path.append(utils_path_unit)
 import unittest
 
 from test_login_input import TestLoginInputUnitTest
+from test_space_explorer_page import TestSpaceExplorerHeaderUnitTest
 # from test_login import TestLogin
 # from test_add_to_cart import TestAddToCart
 
@@ -18,6 +19,9 @@ def suite():
 
     # EC1-3: Testing of Login Input Field
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLoginInputUnitTest))
+
+    # EC4-7: Testing of Space Explorer Page
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSpaceExplorerHeaderUnitTest))
     
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddToCart))
