@@ -18,6 +18,7 @@ class ApolloSeleniumDriver():
 
         self.driver.get(link)
         self.driver.implicitly_wait(10)
+        self.cleanLocalStorate()
 
     
     def getCurrentUrl(self):
@@ -25,6 +26,9 @@ class ApolloSeleniumDriver():
     
     def getLocalStorage(self, key):
         return self.driver.execute_script(f"return window.localStorage.getItem('{key}')")
+
+    def cleanLocalStorate(self):
+        self.driver.execute_script("return window.localStorage.clear()")
 
 
     def find_element(self, by, value, timeout=1):

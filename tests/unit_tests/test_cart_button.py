@@ -18,8 +18,8 @@ class TestCartButtonUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(self.init_url)
     
 
-    def test_EC011_test_cart_button(self):  
-        testInfo = TestInfo("EC11", "Test Cart Button Navigation")
+    def test_EC012_test_cart_button(self):  
+        testInfo = TestInfo("EC12", "Test Cart Button Navigation")
 
         EXPECTED_URL = "http://127.0.0.1:3000/cart"
         

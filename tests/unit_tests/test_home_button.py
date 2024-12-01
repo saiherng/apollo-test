@@ -18,8 +18,8 @@ class TestHomeButtonUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(self.init_url)
     
 
-    def test_EC010_test_home_button(self):  
-        testInfo = TestInfo("EC10", "Test Home Button Navigation")
+    def test_EC011_test_home_button(self):  
+        testInfo = TestInfo("EC11", "Test Home Button Navigation")
 
         EXPECTED_URL = "http://127.0.0.1:3000/"
         

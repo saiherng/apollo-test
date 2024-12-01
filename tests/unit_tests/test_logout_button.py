@@ -18,8 +18,8 @@ class TestLogoutButtonUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(self.init_url)
     
 
-    def test_EC013_test_logout_button(self):  
-        testInfo = TestInfo("EC13", "Test Logout Button Navigation")
+    def test_EC014_test_logout_button(self):  
+        testInfo = TestInfo("EC14", "Test Logout Button Navigation")
 
         EXPECTED_URL = "http://127.0.0.1:3000/"
         

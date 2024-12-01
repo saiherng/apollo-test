@@ -19,6 +19,7 @@ from test_cart_button import TestCartButtonUnitTest
 from test_profile_button import TestProfileButtonUnitTest
 from test_logout_button import TestLogoutButtonUnitTest
 from test_add_remove_cart import TestAddRemoveCartIntegrationTest
+from test_login_button import TestLoginButtonUnitTest
 
 # from test_login import TestLogin
 # from test_add_to_cart import TestAddToCart
@@ -26,30 +27,33 @@ from test_add_remove_cart import TestAddRemoveCartIntegrationTest
 def suite():
     test_suite = unittest.TestSuite()
 
-    # EC1-3: Testing of Login Input Field
+    # ECs: Testing of Login Input Field
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLoginInputUnitTest))
+    
+    # ECs: Testing of Login Button
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLoginButtonUnitTest))
 
-    # EC4-7: Testing of Space Explorer Page
+    # ECs: Testing of Space Explorer Page
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSpaceExplorerHeaderUnitTest))
     
-    # EC8-9: Testing of Launch Page
+    # ECs: Testing of Launch Page
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLauchPageUnitTest))
     
-    # EC10: Testing of Footer Button Home
+    # ECs: Testing of Footer Button Home
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestHomeButtonUnitTest))
     
-    # EC11: Testing of Footer Button Cart
+    # ECs: Testing of Footer Button Cart
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCartButtonUnitTest))
     
-    # EC12: Testing of Footer Button Profile
+    # ECs: Testing of Footer Button Profile
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestProfileButtonUnitTest))
     
-    # EC13: Testing of Footer Button Logout
+    # ECs: Testing of Footer Button Logout
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogoutButtonUnitTest))
 
     # Integration Tests
 
-    # EC14-15: Testing of add to cart integration
+    # ECs: Testing of add to cart integration
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddRemoveCartIntegrationTest))
 
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))

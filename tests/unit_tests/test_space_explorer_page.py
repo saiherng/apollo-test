@@ -19,10 +19,10 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         # Update with path
         self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000')
     
-    def test_EC004_email_address_on_header(self):
+    def test_EC005_email_address_on_header(self):
         # print("\n")
         # print("EC4: Test that the header shows the correct email address")
-        testInfo = TestInfo("EC4", "Test that the header shows the correct email address")
+        testInfo = TestInfo("EC5", "Test that the header shows the correct email address")
 
         email = "test@gmail.com"
 
@@ -37,10 +37,10 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC005_flights_list(self):
+    def test_EC006_flights_list(self):
         # print("\n")
         # print("EC5: Test that the page loads a list of 1 or more flights")
-        testInfo = TestInfo("EC5", "Test that the page loads a list of 1 or more flights")
+        testInfo = TestInfo("EC6", "Test that the page loads a list of 1 or more flights")
 
         self.driver.login("test@gmail.com")
 
@@ -60,11 +60,8 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC006_flights_list_pagination(self):
-        # print("\n")
-        # print("EC6: Test that flight list paginates, and tests adds more button")
-
-        testInfo = TestInfo("EC6", "Test that flight list paginates, and tests adds more button")
+    def test_EC007_flights_list_pagination(self):
+        testInfo = TestInfo("EC7", "Test that flight list paginates, and tests adds more button")
         EXPECTED_NUMBER_OF_LINKS = 20
 
         self.driver.login("test@gmail.com")
@@ -73,29 +70,34 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
             
         # First list, without pagination, should show expected number of links
         try:
-            self.assertEqual(numberOfFlights, EXPECTED_NUMBER_OF_LINKS)
-            printPass(testInfo)
+            try:
+                self.assertEqual(numberOfFlights, EXPECTED_NUMBER_OF_LINKS)
+            except:
+                subTestInfo = TestInfo(f"{testInfo.name}.1", "Incorrect initial number for flights")
+                printFail(subTestInfo)
+
+            # Now, add more flights
+            addMoreButton = self.driver.find_element(By.XPATH, "/html/body/div/div[2]/button")
+
+            self.driver.execute_script("arguments[0].scrollIntoView();", addMoreButton)
+
+            addMoreButton.click()
+
+            time.sleep(3)
+
+            # Reload list of flighs
+            numberOfFlights = self._countFlights()
+
+            # assert that the page now contains more than the initial number of links
+            try:
+                self.assertGreater(numberOfFlights, EXPECTED_NUMBER_OF_LINKS)
+            except:
+                subTestInfo = TestInfo(f"{testInfo.name}.1", "Incorrect pagination added number for flights")
+                printFail(subTestInfo)
         except:
             printFail(testInfo)
-
-        # Now, add more flights
-        addMoreButton = self.driver.find_element(By.XPATH, "/html/body/div/div[2]/button")
-
-        self.driver.execute_script("arguments[0].scrollIntoView();", addMoreButton)
-
-        addMoreButton.click()
-
-        time.sleep(3)
-
-        # Reload list of flighs
-        numberOfFlights = self._countFlights()
-
-        # assert that the page now contains more than the initial number of links
-        try:
-            self.assertGreater(numberOfFlights, EXPECTED_NUMBER_OF_LINKS)
-            printPass(testInfo)
-        except:
-            printFail(testInfo)
+        
+        printPass(testInfo)
 
     def _countFlights(self):
         flighsList = self.driver.driver.find_elements(By.XPATH, "/html/body/div/div[2]/a")
@@ -109,11 +111,8 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         
         return numberOfFlights
 
-    def test_EC007_single_flight_link(self):
-        # print("\n")
-        # print("EC7: Test that the flight link goes to flight page")
-
-        testInfo = TestInfo("EC7", "Test that the flight link goes to flight page")
+    def test_EC008_single_flight_link(self):
+        testInfo = TestInfo("EC8", "Test that the flight link goes to flight page")
         EXPECTED_FLIGHT_PAGE_URL = "http://127.0.0.1:3000/launch/109"
 
         self.driver.login("test@gmail.com")

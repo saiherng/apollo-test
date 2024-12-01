@@ -20,7 +20,7 @@ class TestLoginInputUnitTest(unittest.TestCase):
     def _populateInputField(self, email):
         # Returns userId
 
-        login_box = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
+        login_box = self.driver.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
 
         login_box.send_keys(email)
 
@@ -28,11 +28,10 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         return self.driver.getLocalStorage('userId')
 
-    def test_EC001_valid_email_login(self):  
-        # print("\n")
-        # print("EC1: Test Login input field with valid email address")
+    def test_EC001_valid_email_login(self):
         testInfo = TestInfo("EC1", "Test Login input field with valid email address")
 
+        self.driver.cleanLocalStorate()
 
         email = "testa@gmail.com"
         
@@ -45,9 +44,9 @@ class TestLoginInputUnitTest(unittest.TestCase):
             printFail(testInfo)
     
     def test_EC002_invalid_email_login_string_only(self):
-        # print("\n")
-        # print("EC2: Test Login input field with invalid email address: String only")
         testInfo = TestInfo("EC2", "Test Login input field with invalid email address: String only")
+
+        self.driver.cleanLocalStorate()
 
         userId = self._populateInputField("test")
 
@@ -58,9 +57,9 @@ class TestLoginInputUnitTest(unittest.TestCase):
             printFail(testInfo)
     
     def test_EC003_invalid_email_login_no_domain(self):
-        # print("\n")
-        # print("EC3: Test Login input field with invalid email address: no domain")
         testInfo = TestInfo("EC3", "Test Login input field with invalid email address: no domain")
+
+        self.driver.cleanLocalStorate()
 
         userId = self._populateInputField("test@")
 
