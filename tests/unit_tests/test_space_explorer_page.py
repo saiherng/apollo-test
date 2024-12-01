@@ -19,7 +19,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         # Update with path
         self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000')
     
-    def test_EC4_email_address_on_header(self):
+    def test_EC004_email_address_on_header(self):
         # print("\n")
         # print("EC4: Test that the header shows the correct email address")
         testInfo = TestInfo("EC4", "Test that the header shows the correct email address")
@@ -37,7 +37,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC5_flights_list(self):
+    def test_EC005_flights_list(self):
         # print("\n")
         # print("EC5: Test that the page loads a list of 1 or more flights")
         testInfo = TestInfo("EC5", "Test that the page loads a list of 1 or more flights")
@@ -60,7 +60,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC6_flights_list_pagination(self):
+    def test_EC006_flights_list_pagination(self):
         # print("\n")
         # print("EC6: Test that flight list paginates, and tests adds more button")
 
@@ -109,7 +109,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         
         return numberOfFlights
 
-    def test_EC7_single_flight_link(self):
+    def test_EC007_single_flight_link(self):
         # print("\n")
         # print("EC7: Test that the flight link goes to flight page")
 

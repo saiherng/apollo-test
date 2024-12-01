@@ -28,7 +28,7 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         return self.driver.getLocalStorage('userId')
 
-    def test_EC1_valid_email_login(self):  
+    def test_EC001_valid_email_login(self):  
         # print("\n")
         # print("EC1: Test Login input field with valid email address")
         testInfo = TestInfo("EC1", "Test Login input field with valid email address")
@@ -44,7 +44,7 @@ class TestLoginInputUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
     
-    def test_EC2_invalid_email_login_string_only(self):
+    def test_EC002_invalid_email_login_string_only(self):
         # print("\n")
         # print("EC2: Test Login input field with invalid email address: String only")
         testInfo = TestInfo("EC2", "Test Login input field with invalid email address: String only")
@@ -57,7 +57,7 @@ class TestLoginInputUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
     
-    def test_EC3_invalid_email_login_no_domain(self):
+    def test_EC003_invalid_email_login_no_domain(self):
         # print("\n")
         # print("EC3: Test Login input field with invalid email address: no domain")
         testInfo = TestInfo("EC3", "Test Login input field with invalid email address: no domain")
