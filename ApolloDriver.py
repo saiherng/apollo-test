@@ -13,7 +13,7 @@ class ApolloSeleniumDriver():
     def __init__(self, link):
 
         self.driver = webdriver.Chrome()
-        self.driver.start_devtools()  
+        # self.driver.start_devtools()  
         # self.action = ActionChains(self.driver)
 
         self.driver.get(link)
