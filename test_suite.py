@@ -11,6 +11,7 @@ import unittest
 
 from test_login_input import TestLoginInputUnitTest
 from test_space_explorer_page import TestSpaceExplorerHeaderUnitTest
+from test_launch_page import TestLauchPageUnitTest
 # from test_login import TestLogin
 # from test_add_to_cart import TestAddToCart
 
@@ -22,6 +23,9 @@ def suite():
 
     # EC4-7: Testing of Space Explorer Page
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSpaceExplorerHeaderUnitTest))
+    
+    # EC8-9: Testing of Launch Page
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLauchPageUnitTest))
     
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddToCart))
