@@ -25,8 +25,6 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         login_box.submit()
 
-        self.driver.driver.implicitly_wait(1)
-
         return self.driver.getLocalStorage('userId')
 
     def test_EC1_valid_email_login(self):  
