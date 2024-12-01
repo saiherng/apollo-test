@@ -7,6 +7,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
+from utils import printFail, printPass
 
 class TestLoginInputUnitTest(unittest.TestCase):
     # Tests the input field for valid and invalid inputs
@@ -37,9 +38,9 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         try:
             self.assertGreater(int(userId), 0)
-            print("PASS")
+            printPass()
         except:
-            print("FAIL")
+            printFail()
     
     def test_EC2_invalid_email_login_string_only(self):
         print("\n")
@@ -51,9 +52,9 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         try:
             self.assertIs(userId, None)
-            print("PASS")
+            printPass()
         except:
-            print("FAIL")
+            printFail()
     
     def test_EC3_invalid_email_login_no_domain(self):
         print("\n")
@@ -65,9 +66,9 @@ class TestLoginInputUnitTest(unittest.TestCase):
 
         try:
             self.assertIs(userId, None)
-            print("PASS")
+            printPass()
         except:
-            print("FAIL")
+            printFail()
 
     
     def tearDown(self):
