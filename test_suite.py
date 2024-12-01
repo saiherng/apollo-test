@@ -20,6 +20,8 @@ from test_profile_button import TestProfileButtonUnitTest
 from test_logout_button import TestLogoutButtonUnitTest
 from test_add_remove_cart import TestAddRemoveCartIntegrationTest
 from test_login_button import TestLoginButtonUnitTest
+from test_cart_page import TestCartPageUnitTest
+
 
 # from test_login import TestLogin
 # from test_add_to_cart import TestAddToCart
@@ -50,6 +52,9 @@ def suite():
     
     # ECs: Testing of Footer Button Logout
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogoutButtonUnitTest))
+    
+    # ECs: Testing of Cart Page
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCartPageUnitTest))
 
     # Integration Tests
 
