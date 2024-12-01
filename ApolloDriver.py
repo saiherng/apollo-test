@@ -17,6 +17,12 @@ class ApolloSeleniumDriver():
         # self.action = ActionChains(self.driver)
 
         self.driver.get(link)
+    
+    def getCurrentUrl(self):
+        return self.driver.current_url
+    
+    def getLocalStorage(self, key):
+        return self.driver.execute_script(f"return window.localStorage.getItem('{key}')")
 
 
     def find_element(self, by, value, timeout=1):
