@@ -1,4 +1,5 @@
 .vscode
+*.php
 
 ####################
 ### Windows Git Ignore
