@@ -17,6 +17,8 @@ class ApolloSeleniumDriver():
         # self.action = ActionChains(self.driver)
 
         self.driver.get(link)
+        self.driver.implicitly_wait(10)
+
     
     def getCurrentUrl(self):
         return self.driver.current_url
