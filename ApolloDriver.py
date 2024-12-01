@@ -13,10 +13,22 @@ class ApolloSeleniumDriver():
     def __init__(self, link):
 
         self.driver = webdriver.Chrome()
-        self.driver.start_devtools()  
+        # self.driver.start_devtools()  
         # self.action = ActionChains(self.driver)
 
         self.driver.get(link)
+        self.driver.implicitly_wait(10)
+        self.cleanLocalStorate()
+
+    
+    def getCurrentUrl(self):
+        return self.driver.current_url
+    
+    def getLocalStorage(self, key):
+        return self.driver.execute_script(f"return window.localStorage.getItem('{key}')")
+
+    def cleanLocalStorate(self):
+        self.driver.execute_script("return window.localStorage.clear()")
 
 
     def find_element(self, by, value, timeout=1):
@@ -31,18 +43,14 @@ class ApolloSeleniumDriver():
     
 
     def login(self, email):
-
-        login_box = self.find_element(By.XPATH,'//*[@id="root"]/div/form/input')
+        
+        login_box = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
         
         self.execute_script("arguments[0].scrollIntoView();", login_box)
-        time.sleep(1)
 
         login_box.send_keys(email)
-        time.sleep(1)
 
         login_box.submit()
-
-
 
     def select_rocket(self, path):
 
