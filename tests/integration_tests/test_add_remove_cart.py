@@ -7,7 +7,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
-from utils import printFail, printPass, TestInfo
+from utils import Env, printFail, printPass, TestInfo
 
 
 class TestAddRemoveCartIntegrationTest(unittest.TestCase):
@@ -15,13 +15,13 @@ class TestAddRemoveCartIntegrationTest(unittest.TestCase):
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with path
-        self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000/launch/109')
+        self.driver = ApolloSeleniumDriver(Env.product_page)
     
     
     def test_EC015_add_to_cart(self):
         testInfo = TestInfo("EC15", "Test Add To Cart Button Action")
 
-        EXPECTED_FLIGHT_URL = "http://127.0.0.1:3000/launch/109"
+        EXPECTED_FLIGHT_URL = Env.product_page
 
         self.driver.login("test@gmail.com")
 
@@ -46,7 +46,7 @@ class TestAddRemoveCartIntegrationTest(unittest.TestCase):
     def test_EC016_remove_from_cart(self):
         testInfo = TestInfo("EC16", "Test Remove From Cart Button Action")
 
-        EXPECTED_FLIGHT_URL = "http://127.0.0.1:3000/launch/109"
+        EXPECTED_FLIGHT_URL = Env.product_page
         EXPECTED_CART_EMPTY_MESSAGE = "No items in your cart"
 
         self.driver.login("test@gmail.com")

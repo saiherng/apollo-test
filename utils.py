@@ -1,3 +1,14 @@
+# Environment variables
+
+class Env:
+    domain          = "http://127.0.0.1:3000"
+    home_page       = f"{domain}/"
+    profile_page    = f"{domain}/profile"
+    product_page    = f"{domain}/launch/109"
+    cart_page    = f"{domain}/cart"
+    
+
+
 class TestInfo:
     name = ""
     description = ""

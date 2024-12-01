@@ -8,7 +8,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
-from utils import printFail, printPass, TestInfo
+from utils import Env, printFail, printPass, TestInfo
 
 
 class TestLauchPageUnitTest(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestLauchPageUnitTest(unittest.TestCase):
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with path
-        self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000/launch/109')
+        self.driver = ApolloSeleniumDriver(Env.product_page)
     
     def test_EC009_page_content(self):
         testInfo = TestInfo("EC9", "Test that the page content loaded")

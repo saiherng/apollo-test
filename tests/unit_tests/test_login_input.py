@@ -8,7 +8,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
-from utils import printFail, printPass, TestInfo
+from utils import Env, printFail, printPass, TestInfo
 
 class TestLoginInputUnitTest(unittest.TestCase):
     # Tests the input field for valid and invalid inputs
@@ -16,7 +16,7 @@ class TestLoginInputUnitTest(unittest.TestCase):
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with path
-        self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000')
+        self.driver = ApolloSeleniumDriver(Env.domain)
     
     def _populateInputField(self, email):
         # Returns userId

@@ -8,7 +8,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
-from utils import printFail, printPass, TestInfo
+from utils import Env, printFail, printPass, TestInfo
 
 
 class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with path
-        self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000')
+        self.driver = ApolloSeleniumDriver(Env.domain)
     
     def test_EC005_email_address_on_header(self):
         # print("\n")
@@ -113,7 +113,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
 
     def test_EC008_single_flight_link(self):
         testInfo = TestInfo("EC8", "Test that the flight link goes to flight page")
-        EXPECTED_FLIGHT_PAGE_URL = "http://127.0.0.1:3000/launch/109"
+        EXPECTED_FLIGHT_PAGE_URL = Env.product_page
 
         self.driver.login("test@gmail.com")
 
