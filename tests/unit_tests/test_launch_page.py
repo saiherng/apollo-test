@@ -19,8 +19,8 @@ class TestLauchPageUnitTest(unittest.TestCase):
         # Update with path
         self.driver = ApolloSeleniumDriver(Env.product_page)
     
-    def test_EC009_page_content(self):
-        testInfo = TestInfo("EC9", "Test that the page content loaded")
+    def test_EC010_page_content(self):
+        testInfo = TestInfo("EC10", "Test that the page content loaded")
 
         EXPECTED_LOGO_URL = "https://images2.imgbox.com/d2/3b/bQaWiil0_o.png"
         EXPECTED_TITLE = "Starlink-15 (v1.0)"
@@ -74,8 +74,8 @@ class TestLauchPageUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC010_button_texts(self):
-        testInfo = TestInfo("EC10", "Test Add To Cart Button Texts")
+    def test_EC011_button_texts(self):
+        testInfo = TestInfo("EC11", "Test Add To Cart Button Texts")
 
         EXPECTED_NOT_IN_CART_TEXT = "ADD TO CART"
         EXPECTED_IN_CART_TEXT = "REMOVE FROM CART"

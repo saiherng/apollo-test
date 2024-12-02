@@ -18,8 +18,8 @@ class TestLogoutButtonUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(self.init_url)
     
 
-    def test_EC014_test_logout_button(self):  
-        testInfo = TestInfo("EC14", "Test Logout Button Navigation")
+    def test_EC015_test_logout_button(self):  
+        testInfo = TestInfo("EC15", "Test Logout Button Navigation")
         
         self.driver.login("test@gmail.com")
 

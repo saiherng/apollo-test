@@ -17,8 +17,8 @@ class TestCartPageUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.cart_page)
     
 
-    def test_EC015_test_logout_button(self):  
-        testInfo = TestInfo("EC15", "Test Cart Page")
+    def test_EC016_test_logout_button(self):  
+        testInfo = TestInfo("EC16", "Test Cart Page")
         
         self.driver.login("test@gmail.com")
 
