@@ -61,8 +61,6 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
             printFail(testInfo)
     
     def test_EC007_email_address_on_header(self):
-        # print("\n")
-        # print("EC4: Test that the header shows the correct email address")
         testInfo = TestInfo("EC7", "Test that the header shows the correct email address")
 
         email = "test@gmail.com"
@@ -79,8 +77,6 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
             printFail(testInfo)
 
     def test_EC008_flights_list(self):
-        # print("\n")
-        # print("EC5: Test that the page loads a list of 1 or more flights")
         testInfo = TestInfo("EC8", "Test that the page loads a list of 1 or more flights")
 
         self.driver.login("test@gmail.com")
@@ -120,7 +116,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
             # Now, add more flights
             addMoreButton = self.driver.find_element(By.XPATH, "/html/body/div/div[2]/button")
 
-            self.driver.execute_script("arguments[0].scrollIntoView();", addMoreButton)
+            self.driver.scrollIntoView(addMoreButton)
 
             addMoreButton.click()
 

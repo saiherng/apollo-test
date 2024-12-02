@@ -23,6 +23,8 @@ from test_login_button import TestLoginButtonUnitTest
 from test_cart_page import TestCartPageUnitTest
 from test_profile_page import TestProfilePageUnitTest
 from test_booking import TestBookingIntegrationTest
+from test_404_requests import Test404RequestsUnitTest
+
 
 
 # from test_login import TestLogin
@@ -60,6 +62,9 @@ def suite():
     
     # ECs: Testing of Cart Page
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestProfilePageUnitTest))
+    
+    # ECs: Testing of Cart Page
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(Test404RequestsUnitTest))
 
     # Integration Tests
 
