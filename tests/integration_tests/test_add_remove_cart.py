@@ -18,8 +18,8 @@ class TestAddRemoveCartIntegrationTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.product_page)
     
     
-    def test_EC018_add_to_cart(self):
-        testInfo = TestInfo("EC18", "Test Add To Cart Button Action")
+    def test_EC019_add_to_cart(self):
+        testInfo = TestInfo("EC19", "Test Add To Cart Button Action")
 
         EXPECTED_FLIGHT_URL = Env.product_page
 
@@ -43,8 +43,8 @@ class TestAddRemoveCartIntegrationTest(unittest.TestCase):
         except:
             printFail(testInfo)
     
-    def test_EC019_remove_from_cart(self):
-        testInfo = TestInfo("EC19", "Test Remove From Cart Button Action")
+    def test_EC020_remove_from_cart(self):
+        testInfo = TestInfo("EC20", "Test Remove From Cart Button Action")
 
         EXPECTED_FLIGHT_URL = Env.product_page
         EXPECTED_CART_EMPTY_MESSAGE = "No items in your cart"

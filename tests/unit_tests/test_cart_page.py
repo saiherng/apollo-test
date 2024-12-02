@@ -17,8 +17,8 @@ class TestCartPageUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.cart_page)
     
 
-    def test_EC016_test_logout_button(self):  
-        testInfo = TestInfo("EC16", "Test Cart Page Exists")
+    def test_EC017_test_logout_button(self):  
+        testInfo = TestInfo("EC17", "Test Cart Page Exists")
         
         self.driver.login("test@gmail.com")
 

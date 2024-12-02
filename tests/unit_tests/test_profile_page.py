@@ -17,8 +17,8 @@ class TestProfilePageUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.profile_page)
     
 
-    def test_EC017_test_logout_button(self):  
-        testInfo = TestInfo("EC17", "Test Profile Page Exists")
+    def test_EC018_test_logout_button(self):  
+        testInfo = TestInfo("EC18", "Test Profile Page Exists")
         
         self.driver.login("test@gmail.com")
 
