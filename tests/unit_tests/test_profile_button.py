@@ -18,8 +18,8 @@ class TestProfileButtonUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(self.init_url)
     
 
-    def test_EC015_test_profile_button(self):  
-        testInfo = TestInfo("EC15", "Test Profile Button Navigation")
+    def test_EC016_test_profile_button(self):  
+        testInfo = TestInfo("EC16", "Test Profile Button Navigation")
 
         EXPECTED_URL = Env.profile_page
         

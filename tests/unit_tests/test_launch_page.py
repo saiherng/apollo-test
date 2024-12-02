@@ -74,8 +74,32 @@ class TestLauchPageUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC012_button_texts(self):
-        testInfo = TestInfo("EC12", "Test Add To Cart Button Texts")
+    def test_EC012_test_launchpage_is_not_accessible_without_sign_in(self):  
+        testInfo = TestInfo("EC12", "Test Launch Page is not accessible without signin")
+
+        try:
+            # Verfiy the user is signed out
+            userId = self.driver.getLocalStorage('userId')
+
+            try:
+                self.assertIsNone(userId)
+            except:
+                subTestInfo = TestInfo(f"{testInfo.name}.1", "User should not be logged in.")
+                printFail(subTestInfo)
+
+            self.driver.driver.get(Env.product_page)
+
+            loginInput = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
+
+
+            self.assertIsNotNone(loginInput)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
+
+    def test_EC013_button_texts(self):
+        testInfo = TestInfo("EC13", "Test Add To Cart Button Texts")
 
         EXPECTED_NOT_IN_CART_TEXT = "ADD TO CART"
         EXPECTED_IN_CART_TEXT = "REMOVE FROM CART"

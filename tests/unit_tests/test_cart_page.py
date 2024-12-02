@@ -17,8 +17,8 @@ class TestCartPageUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.cart_page)
     
 
-    def test_EC017_test_logout_button(self):  
-        testInfo = TestInfo("EC17", "Test Cart Page Exists")
+    def test_EC018_test_cartpage_exists(self):  
+        testInfo = TestInfo("EC18", "Test Cart Page Exists")
         
         self.driver.login("test@gmail.com")
 
@@ -34,6 +34,29 @@ class TestCartPageUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
+    def test_EC019_test_cart_is_not_accessible_without_sign_in(self):  
+        testInfo = TestInfo("EC19", "Test Cart Page is not accessible without signin")
+
+        try:
+            # Verfiy the user is signed out
+            userId = self.driver.getLocalStorage('userId')
+
+            try:
+                self.assertIsNone(userId)
+            except:
+                subTestInfo = TestInfo(f"{testInfo.name}.1", "User should not be logged in.")
+                printFail(subTestInfo)
+
+            self.driver.driver.get(Env.cart_page)
+
+            loginInput = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
+
+
+            self.assertIsNotNone(loginInput)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
     
     def tearDown(self):
         self.driver.quit()

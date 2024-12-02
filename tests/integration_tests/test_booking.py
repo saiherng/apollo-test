@@ -19,8 +19,8 @@ class TestBookingIntegrationTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.domain)
     
     
-    def test_EC021_book_one_flight(self):
-        testInfo = TestInfo("EC21", "Test Book One Flight")
+    def test_EC024_book_one_flight(self):
+        testInfo = TestInfo("EC24", "Test Book One Flight")
 
         self.driver.login('test@gmail.com')
 
@@ -53,8 +53,8 @@ class TestBookingIntegrationTest(unittest.TestCase):
         except:
             printFail(testInfo)
     
-    def test_EC022_book_two_flights(self):
-        testInfo = TestInfo("EC22", "Test Book Two Flights")
+    def test_EC025_book_two_flights(self):
+        testInfo = TestInfo("EC25", "Test Book Two Flights")
 
         self.driver.login('test@gmail.com')
         time.sleep(1)
@@ -94,8 +94,8 @@ class TestBookingIntegrationTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC023_test_remove_one_booking(self):
-        testInfo = TestInfo("EC23", "Test Remove booked flight")
+    def test_EC026_test_remove_one_booking(self):
+        testInfo = TestInfo("EC26", "Test Remove booked flight")
 
         self.driver.login('test@gmail.com')
 
@@ -158,8 +158,8 @@ class TestBookingIntegrationTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC024_test_remove_one_booking(self):
-        testInfo = TestInfo("EC24", "Test Remove all booked flights")
+    def test_EC027_test_remove_one_booking(self):
+        testInfo = TestInfo("EC27", "Test Remove all booked flights")
 
         self.driver.login('test@gmail.com')
         time.sleep(1)
