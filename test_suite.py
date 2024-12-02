@@ -21,6 +21,7 @@ from test_logout_button import TestLogoutButtonUnitTest
 from test_add_remove_cart import TestAddRemoveCartIntegrationTest
 from test_login_button import TestLoginButtonUnitTest
 from test_cart_page import TestCartPageUnitTest
+from test_profile_page import TestProfilePageUnitTest
 
 
 # from test_login import TestLogin
@@ -55,6 +56,9 @@ def suite():
     
     # ECs: Testing of Cart Page
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCartPageUnitTest))
+    
+    # ECs: Testing of Cart Page
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestProfilePageUnitTest))
 
     # Integration Tests
 
