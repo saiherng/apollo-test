@@ -139,6 +139,53 @@ class TestLauchPageUnitTest(unittest.TestCase):
             printPass(testInfo)
         except:
             printFail(testInfo)
+    
+    def test_EC014_test_not_existing_product_page_signed_in(self):  
+        testInfo = TestInfo("EC14", "Test non existing launch id while signed in")
+
+        EXPECTED_PAGE_TEXT = "ERROR: Cannot read properties of undefined (reading 'flight_number')"
+        
+        self.driver.login("test@gmail.com")
+        time.sleep(1)
+
+        self.driver.driver.get(f"{Env.domain}/launch/abc")
+
+
+        try:
+            pageContent = self.driver.find_element(By.XPATH, '/html/body/div/div[2]')
+
+            pageText = pageContent.find_element(By.CSS_SELECTOR, "p")
+
+            self.assertEqual(pageText.text, EXPECTED_PAGE_TEXT)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
+
+    def test_EC015_test_not_existing_product_page_signed_in(self):  
+        testInfo = TestInfo("EC15", "Test non given launch id while signed in")
+        
+        self.driver.login("test@gmail.com")
+        time.sleep(1)
+
+        self.driver.driver.get(f"{Env.domain}/launch/")
+
+
+        try:
+            pageContent = self.driver.find_element(By.XPATH, '/html/body/div/div[2]')
+
+            childrenElements = pageContent.find_elements(By.CSS_SELECTOR, "*")
+
+            elementCount = 0
+
+            for _ in childrenElements:
+                elementCount += 1
+
+            self.assertEqual(elementCount, 0)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
 
     def tearDown(self) -> None:
         self.driver.quit()

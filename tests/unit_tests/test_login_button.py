@@ -18,8 +18,8 @@ class TestLoginButtonUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.domain)
     
 
-    def test_EC007_valid_email_login(self):  
-        testInfo = TestInfo("EC7", "Test Login button")
+    def test_EC004_valid_email_login(self):  
+        testInfo = TestInfo("EC4", "Test Login button")
 
         email = "testa@gmail.com"
         

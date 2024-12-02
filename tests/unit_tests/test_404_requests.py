@@ -19,8 +19,8 @@ class Test404RequestsUnitTest(unittest.TestCase):
         # Update with path
         self.driver = ApolloSeleniumDriver(Env.domain)
 
-    def test_EC022_test_not_existing_page_signed_in(self):  
-        testInfo = TestInfo("EC26", "Test non existing page while signed in")
+    def test_EC024_test_not_existing_page_signed_in(self):  
+        testInfo = TestInfo("EC24", "Test non existing page while signed in")
         
         self.driver.login("test@gmail.com")
         time.sleep(1)
@@ -44,8 +44,8 @@ class Test404RequestsUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
     
-    def test_EC023_test_not_existing_page_signed_out(self):  
-        testInfo = TestInfo("EC27", "Test non existing page while signed out")
+    def test_EC025_test_not_existing_page_signed_out(self):  
+        testInfo = TestInfo("EC25", "Test non existing page while signed out")
 
         try:
             # Verfiy the user is signed out

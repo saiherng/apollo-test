@@ -17,8 +17,8 @@ class TestProfilePageUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.profile_page)
     
 
-    def test_EC020_test_logout_button(self):  
-        testInfo = TestInfo("EC20", "Test Profile Page Exists")
+    def test_EC022_test_logout_button(self):  
+        testInfo = TestInfo("EC22", "Test Profile Page Exists")
         
         self.driver.login("test@gmail.com")
 
@@ -34,8 +34,8 @@ class TestProfilePageUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
     
-    def test_EC021_test_profile_is_not_accessible_without_sign_in(self):  
-        testInfo = TestInfo("EC21", "Test Profile Page is not accessible without signin")
+    def test_EC023_test_profile_is_not_accessible_without_sign_in(self):  
+        testInfo = TestInfo("EC23", "Test Profile Page is not accessible without signin")
 
         try:
             # Verfiy the user is signed out

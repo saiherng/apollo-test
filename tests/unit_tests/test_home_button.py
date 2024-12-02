@@ -18,8 +18,8 @@ class TestHomeButtonUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(self.init_url)
     
 
-    def test_EC014_test_home_button(self):  
-        testInfo = TestInfo("EC14", "Test Home Button Navigation")
+    def test_EC016_test_home_button(self):  
+        testInfo = TestInfo("EC16", "Test Home Button Navigation")
 
         EXPECTED_URL = Env.home_page
         
