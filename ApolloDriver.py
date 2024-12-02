@@ -37,10 +37,15 @@ class ApolloSeleniumDriver():
             EC.presence_of_element_located((by, value))
         )
     
+    def back(self):
+        self.driver.back()
+    
 
     def execute_script(self,script, target):
         return self.driver.execute_script(script,target)
     
+    def scrollIntoView(self, element):
+        return self.execute_script("arguments[0].scrollIntoView();", element)
 
     def login(self, email):
         

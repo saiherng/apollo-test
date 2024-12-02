@@ -5,7 +5,7 @@ class Env:
     home_page       = f"{domain}/"
     profile_page    = f"{domain}/profile"
     product_page    = f"{domain}/launch/109"
-    cart_page    = f"{domain}/cart"
+    cart_page       = f"{domain}/cart"
     
 
 

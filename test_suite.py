@@ -22,6 +22,7 @@ from test_add_remove_cart import TestAddRemoveCartIntegrationTest
 from test_login_button import TestLoginButtonUnitTest
 from test_cart_page import TestCartPageUnitTest
 from test_profile_page import TestProfilePageUnitTest
+from test_booking import TestBookingIntegrationTest
 
 
 # from test_login import TestLogin
@@ -64,6 +65,9 @@ def suite():
 
     # ECs: Testing of add to cart integration
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddRemoveCartIntegrationTest))
+
+    # ECs: Testing of book flight integration
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestBookingIntegrationTest))
 
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddToCart))
