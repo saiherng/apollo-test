@@ -12,7 +12,7 @@ sys.path.append(utils_path_integration)
 import unittest
 
 from test_login_input import TestLoginInputUnitTest
-from test_space_explorer_page import TestSpaceExplorerHeaderUnitTest
+from test_home_page import TestSpaceExplorerHeaderUnitTest
 from test_launch_page import TestLauchPageUnitTest
 from test_home_button import TestHomeButtonUnitTest
 from test_cart_button import TestCartButtonUnitTest
