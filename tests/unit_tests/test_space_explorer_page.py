@@ -20,7 +20,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.domain)
 
     def test_EC005_test_logout_button(self):  
-        testInfo = TestInfo("EC5", "Test Home Page")
+        testInfo = TestInfo("EC5", "Test Home Page Exists")
         
         self.driver.login("test@gmail.com")
 

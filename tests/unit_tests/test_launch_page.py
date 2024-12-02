@@ -20,7 +20,7 @@ class TestLauchPageUnitTest(unittest.TestCase):
         self.driver = ApolloSeleniumDriver(Env.product_page)
     
     def test_EC010_page_content(self):
-        testInfo = TestInfo("EC10", "Test that the page content loaded")
+        testInfo = TestInfo("EC10", "Test that the page exists and content loaded")
 
         EXPECTED_LOGO_URL = "https://images2.imgbox.com/d2/3b/bQaWiil0_o.png"
         EXPECTED_TITLE = "Starlink-15 (v1.0)"

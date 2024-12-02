@@ -18,7 +18,7 @@ class TestCartPageUnitTest(unittest.TestCase):
     
 
     def test_EC016_test_logout_button(self):  
-        testInfo = TestInfo("EC16", "Test Cart Page")
+        testInfo = TestInfo("EC16", "Test Cart Page Exists")
         
         self.driver.login("test@gmail.com")
 

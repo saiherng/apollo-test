@@ -18,7 +18,7 @@ class TestProfilePageUnitTest(unittest.TestCase):
     
 
     def test_EC017_test_logout_button(self):  
-        testInfo = TestInfo("EC17", "Test Profile Page")
+        testInfo = TestInfo("EC17", "Test Profile Page Exists")
         
         self.driver.login("test@gmail.com")
 
