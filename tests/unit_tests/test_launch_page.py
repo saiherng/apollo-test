@@ -8,7 +8,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
-from utils import printFail, printPass, TestInfo
+from utils import Env, printFail, printPass, TestInfo
 
 
 class TestLauchPageUnitTest(unittest.TestCase):
@@ -17,10 +17,10 @@ class TestLauchPageUnitTest(unittest.TestCase):
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with path
-        self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000/launch/109')
+        self.driver = ApolloSeleniumDriver(Env.product_page)
     
-    def test_EC009_page_content(self):
-        testInfo = TestInfo("EC9", "Test that the page content loaded")
+    def test_EC011_page_content(self):
+        testInfo = TestInfo("EC11", "Test that the page exists and content loaded")
 
         EXPECTED_LOGO_URL = "https://images2.imgbox.com/d2/3b/bQaWiil0_o.png"
         EXPECTED_TITLE = "Starlink-15 (v1.0)"
@@ -74,8 +74,32 @@ class TestLauchPageUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC010_button_texts(self):
-        testInfo = TestInfo("EC10", "Test Add To Cart Button Texts")
+    def test_EC012_test_launchpage_is_not_accessible_without_sign_in(self):  
+        testInfo = TestInfo("EC12", "Test Launch Page is not accessible without signin")
+
+        try:
+            # Verfiy the user is signed out
+            userId = self.driver.getLocalStorage('userId')
+
+            try:
+                self.assertIsNone(userId)
+            except:
+                subTestInfo = TestInfo(f"{testInfo.name}.1", "User should not be logged in.")
+                printFail(subTestInfo)
+
+            self.driver.driver.get(Env.product_page)
+
+            loginInput = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
+
+
+            self.assertIsNotNone(loginInput)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
+
+    def test_EC013_button_texts(self):
+        testInfo = TestInfo("EC13", "Test Add To Cart Button Texts")
 
         EXPECTED_NOT_IN_CART_TEXT = "ADD TO CART"
         EXPECTED_IN_CART_TEXT = "REMOVE FROM CART"
@@ -111,6 +135,53 @@ class TestLauchPageUnitTest(unittest.TestCase):
             except:
                 subTestInfo = TestInfo(f"{testInfo.name}.3", "Incorrect button text when not in cart")
                 printFail(subTestInfo)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
+    
+    def test_EC014_test_not_existing_product_page_signed_in(self):  
+        testInfo = TestInfo("EC14", "Test non existing launch id while signed in")
+
+        EXPECTED_PAGE_TEXT = "ERROR: Cannot read properties of undefined (reading 'flight_number')"
+        
+        self.driver.login("test@gmail.com")
+        time.sleep(1)
+
+        self.driver.driver.get(f"{Env.domain}/launch/abc")
+
+
+        try:
+            pageContent = self.driver.find_element(By.XPATH, '/html/body/div/div[2]')
+
+            pageText = pageContent.find_element(By.CSS_SELECTOR, "p")
+
+            self.assertEqual(pageText.text, EXPECTED_PAGE_TEXT)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
+
+    def test_EC015_test_not_existing_product_page_signed_in(self):  
+        testInfo = TestInfo("EC15", "Test non given launch id while signed in")
+        
+        self.driver.login("test@gmail.com")
+        time.sleep(1)
+
+        self.driver.driver.get(f"{Env.domain}/launch/")
+
+
+        try:
+            pageContent = self.driver.find_element(By.XPATH, '/html/body/div/div[2]')
+
+            childrenElements = pageContent.find_elements(By.CSS_SELECTOR, "*")
+
+            elementCount = 0
+
+            for _ in childrenElements:
+                elementCount += 1
+
+            self.assertEqual(elementCount, 0)
 
             printPass(testInfo)
         except:

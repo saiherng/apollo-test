@@ -8,7 +8,7 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
-from utils import printFail, printPass, TestInfo
+from utils import Env, printFail, printPass, TestInfo
 
 
 class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
@@ -17,12 +17,51 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with path
-        self.driver = ApolloSeleniumDriver('http://127.0.0.1:3000')
+        self.driver = ApolloSeleniumDriver(Env.domain)
+
+    def test_EC005_test_homepage_exists(self):  
+        testInfo = TestInfo("EC5", "Test Home Page Exists")
+        
+        self.driver.login("test@gmail.com")
+
+        EXPECTED_PAGE_TITLE = "Space Explorer"
+
+        try:
+            pageTitle = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div/div/h2')
+
+
+            self.assertEqual(pageTitle.text, EXPECTED_PAGE_TITLE)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
     
-    def test_EC005_email_address_on_header(self):
-        # print("\n")
-        # print("EC4: Test that the header shows the correct email address")
-        testInfo = TestInfo("EC5", "Test that the header shows the correct email address")
+    def test_EC006_test_homepage_is_not_accessible_without_sign_in(self):  
+        testInfo = TestInfo("EC6", "Test Home Page is not accessible without signin")
+
+        try:
+            # Verfiy the user is signed out
+            userId = self.driver.getLocalStorage('userId')
+
+            try:
+                self.assertIsNone(userId)
+            except:
+                subTestInfo = TestInfo(f"{testInfo.name}.1", "User should not be logged in.")
+                printFail(subTestInfo)
+
+            self.driver.driver.get(Env.home_page)
+
+            loginInput = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="login-input"]')
+
+
+            self.assertIsNotNone(loginInput)
+
+            printPass(testInfo)
+        except:
+            printFail(testInfo)
+    
+    def test_EC007_email_address_on_header(self):
+        testInfo = TestInfo("EC7", "Test that the header shows the correct email address")
 
         email = "test@gmail.com"
 
@@ -37,10 +76,8 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC006_flights_list(self):
-        # print("\n")
-        # print("EC5: Test that the page loads a list of 1 or more flights")
-        testInfo = TestInfo("EC6", "Test that the page loads a list of 1 or more flights")
+    def test_EC008_flights_list(self):
+        testInfo = TestInfo("EC8", "Test that the page loads a list of 1 or more flights")
 
         self.driver.login("test@gmail.com")
 
@@ -60,8 +97,8 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC007_flights_list_pagination(self):
-        testInfo = TestInfo("EC7", "Test that flight list paginates, and tests adds more button")
+    def test_EC009_flights_list_pagination(self):
+        testInfo = TestInfo("EC9", "Test that flight list paginates, and tests adds more button")
         EXPECTED_NUMBER_OF_LINKS = 20
 
         self.driver.login("test@gmail.com")
@@ -79,7 +116,7 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
             # Now, add more flights
             addMoreButton = self.driver.find_element(By.XPATH, "/html/body/div/div[2]/button")
 
-            self.driver.execute_script("arguments[0].scrollIntoView();", addMoreButton)
+            self.driver.scrollIntoView(addMoreButton)
 
             addMoreButton.click()
 
@@ -111,9 +148,9 @@ class TestSpaceExplorerHeaderUnitTest(unittest.TestCase):
         
         return numberOfFlights
 
-    def test_EC008_single_flight_link(self):
-        testInfo = TestInfo("EC8", "Test that the flight link goes to flight page")
-        EXPECTED_FLIGHT_PAGE_URL = "http://127.0.0.1:3000/launch/109"
+    def test_EC010_single_flight_link(self):
+        testInfo = TestInfo("EC10", "Test that the flight link goes to flight page")
+        EXPECTED_FLIGHT_PAGE_URL = Env.product_page
 
         self.driver.login("test@gmail.com")
 

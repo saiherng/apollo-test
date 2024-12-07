@@ -10,6 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 import sys
+
+from utils import Env
 sys.path.append('..')
 
 from ApolloDriver import ApolloSeleniumDriver
@@ -19,7 +21,7 @@ class TestAddToCart(unittest.TestCase):
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with your path to ChromeDriver
-        self.driver = ApolloSeleniumDriver("http://127.0.0.1:3000")
+        self.driver = ApolloSeleniumDriver(Env.domain)
         
       
 
