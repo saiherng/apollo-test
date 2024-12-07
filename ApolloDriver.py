@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils import Env
+
 
 
 class ApolloSeleniumDriver():
@@ -26,6 +28,9 @@ class ApolloSeleniumDriver():
     
     def getLocalStorage(self, key):
         return self.driver.execute_script(f"return window.localStorage.getItem('{key}')")
+    
+    def setLocalStorage(self, key, value):
+        return self.driver.execute_script(f"return window.localStorage.setItem('{key}', '{value}')")
 
     def cleanLocalStorate(self):
         self.driver.execute_script("return window.localStorage.clear()")
@@ -76,8 +81,8 @@ class ApolloSeleniumDriver():
 
     def go_to_cart(self):
 
-        cart = self.driver.find_element(By.XPATH,'//*[@id="root"]/footer/div/a[2]')
-        cart.click()
+        cartLink = self.find_element(By.CSS_SELECTOR, 'a[href="/cart"]')
+        cartLink.click()
 
     def book_all(self):
         
@@ -100,8 +105,42 @@ class ApolloSeleniumDriver():
         logout_button = self.driver.find_element(By.CSS_SELECTOR,'button[data-testid="logout-button"]')
         logout_button.click()
 
-    
-    
+    def bookAFlight(self) -> bool:
+        EXPECTED_FLIGHT_URL = Env.product_page
+
+        self.driver.get(EXPECTED_FLIGHT_URL)
+
+        addButton = self.find_element(By.CSS_SELECTOR, '[data-testid="action-button"]')
+        self.scrollIntoView(addButton)
+        if (addButton.text == "CANCEL THIS TRIP"):
+            addButton.click()
+            time.sleep(1)
+        
+        addButton = self.find_element(By.CSS_SELECTOR, '[data-testid="action-button"]')
+
+        addButton.click()
+        time.sleep(1)
+
+        self.go_to_cart()
+
+        bookButton = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="book-button"]')
+
+        bookButton.click()
+
+        self.driver.get(Env.profile_page)
+
+        bookedFlights = self.driver.find_elements(By.XPATH, '/html/body/div/div[2]/a')
+
+        bookedFlightsIsFound = False
+
+        for flight in bookedFlights:
+            link = flight.get_attribute('href')
+
+            if link == EXPECTED_FLIGHT_URL:
+                bookedFlightsIsFound = True
+                break
+
+        return bookedFlightsIsFound      
 
 
     def quit(self):
