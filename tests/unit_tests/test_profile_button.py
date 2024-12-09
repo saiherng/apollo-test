@@ -7,21 +7,21 @@ sys.path.append('..')
 sys.path.append('../..')
 
 from ApolloDriver import ApolloSeleniumDriver
-from utils import printFail, printPass, TestInfo
+from utils import Env, printFail, printPass, TestInfo
 
 class TestProfileButtonUnitTest(unittest.TestCase):
 
     def setUp(self):
         # Setup the Chrome WebDriver
         # Update with path
-        self.init_url = 'http://127.0.0.1:3000/launch/109'
+        self.init_url = Env.product_page
         self.driver = ApolloSeleniumDriver(self.init_url)
     
 
-    def test_EC013_test_profile_button(self):  
-        testInfo = TestInfo("EC13", "Test Profile Button Navigation")
+    def test_EC018_test_profile_button(self):  
+        testInfo = TestInfo("EC18", "Test Profile Button Navigation")
 
-        EXPECTED_URL = "http://127.0.0.1:3000/profile"
+        EXPECTED_URL = Env.profile_page
         
         self.driver.login("test@gmail.com")
 
