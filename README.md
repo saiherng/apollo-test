@@ -1,5 +1,18 @@
 # apollo-test
 
+Sai Hern
+
+Fabian Nino
+
+CSUF 542 Software Verification and Validation
+
+Professor Neeraj Gupta
+
+Fall 2024
+
+
+## Installation
+
 Install Selenium
 
 `$ pip install selenium`
