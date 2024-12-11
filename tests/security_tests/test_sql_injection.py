@@ -31,12 +31,16 @@ class TestSessionSQLInjectionSecurityTest(unittest.TestCase):
 
         login_box.submit()
 
+        # re login with any user. If user table does not exist, it should not log in
+
+        self.driver.login("test@gmail.com")
+
         # Verify that the user is logged in
         userId_ = self.driver.getLocalStorage('userId')
 
         
         try:
-            self.assertIs(userId_, None)
+            self.assertGreater(int(userId_), 0)
             printPass(testInfo)
         except:
             testInfoError = TestInfo(testInfo.name, f"{testInfo.description}: Users table is deleted")
