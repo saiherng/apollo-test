@@ -55,16 +55,22 @@ class TestSessionSQLInjectionSecurityTest(unittest.TestCase):
 
         time.sleep(1)
 
-        EXPECTED_TITLE = "Starlink-15 (v1.0)"
+        self.driver.logout()
 
+        # re login with any user. If user table does not exist, it should not log in
+
+        self.driver.login("test@gmail.com")
+
+        # Verify that the user is logged in
+        userId_ = self.driver.getLocalStorage('userId')
+
+        
         try:
-            pageTitle = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[1]/div/h2')
-
-            self.assertEqual(pageTitle.text, EXPECTED_TITLE)
-
+            self.assertGreater(int(userId_), 0)
             printPass(testInfo)
         except:
-            printFail(testInfo)
+            testInfoError = TestInfo(testInfo.name, f"{testInfo.description}: Users table is deleted")
+            printFail(testInfoError)
 
     
     def tearDown(self) -> None:
