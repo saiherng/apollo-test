@@ -95,9 +95,6 @@ def suite():
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestUserDataLeak))
 
 
-    # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))
-    # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddToCart))
-
 
     return test_suite
 
