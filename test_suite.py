@@ -27,6 +27,7 @@ from test_profile_page import TestProfilePageUnitTest
 from test_booking import TestBookingIntegrationTest
 from test_404_requests import Test404RequestsUnitTest
 from tests.security_tests.test_session_clone import TestSessionCloneSecurityTest
+from tests.security_tests.test_sql_injection import TestSessionSQLInjectionSecurityTest
 
 
 
@@ -84,6 +85,9 @@ def suite():
 
     # ECs: Testing of book flight by hacking session and user id
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSessionCloneSecurityTest))
+
+    # ECs: Testing of book flight by hacking session and user id
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSessionSQLInjectionSecurityTest))
 
 
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))
