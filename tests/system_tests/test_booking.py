@@ -11,7 +11,7 @@ from ApolloDriver import ApolloSeleniumDriver
 from utils import Env, printFail, printPass, TestInfo
 
 
-class TestBookingIntegrationTest(unittest.TestCase):
+class TestBookingSystemTest(unittest.TestCase):
 
     def setUp(self):
         # Setup the Chrome WebDriver

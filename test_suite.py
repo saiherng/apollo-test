@@ -24,7 +24,7 @@ from test_add_remove_cart import TestAddRemoveCartIntegrationTest
 from test_login_button import TestLoginButtonUnitTest
 from test_cart_page import TestCartPageUnitTest
 from test_profile_page import TestProfilePageUnitTest
-from test_booking import TestBookingIntegrationTest
+from tests.system_tests.test_booking import TestBookingSystemTest
 from test_404_requests import Test404RequestsUnitTest
 from tests.security_tests.test_session_clone import TestSessionCloneSecurityTest
 from tests.security_tests.test_sql_injection import TestSessionSQLInjectionSecurityTest
@@ -79,7 +79,7 @@ def suite():
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddRemoveCartIntegrationTest))
 
     # ECs: Testing of book flight integration
-    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestBookingIntegrationTest))
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestBookingSystemTest))
 
     # Security Tests
 
