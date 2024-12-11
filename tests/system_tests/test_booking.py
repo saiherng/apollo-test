@@ -158,7 +158,7 @@ class TestBookingSystemTest(unittest.TestCase):
         except:
             printFail(testInfo)
 
-    def test_EC031_test_remove_one_booking(self):
+    def test_EC031_test_remove_all_booking(self):
         testInfo = TestInfo("EC31", "Test Remove all booked flights")
 
         self.driver.login('test@gmail.com')

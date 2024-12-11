@@ -42,12 +42,12 @@ Navigate to tests folder
 
 - [EC26: Test Add To Cart Button Action](./tests/integration_tests/test_add_remove_cart.py)
 - [EC27: Test Remove From Cart Button Action](./tests/integration_tests/test_add_remove_cart.py)
-- [EC28: Test Book One Flight](./tests/integration_tests/test_add_remove_cart.py)
-- [EC29: Test Book Two Flights](./tests/integration_tests/test_add_remove_cart.py)
 
 ## System Tests
-- [EC30: Test Remove booked flight](./tests/system_tests/test_add_remove_cart.py)
-- [EC31: Test Remove all booked flights](./tests/system_tests/test_add_remove_cart.py)
+- [EC28: Test Book One Flight](./tests/system_tests/test_booking.py)
+- [EC29: Test Book Two Flights](./tests/system_tests/test_booking.py)
+- [EC30: Test Remove booked flight](./tests/system_tests/test_booking.py)
+- [EC31: Test Remove all booked flights](./tests/system_tests/test_booking.py)
 
 ## Security Tests
 - [EC32: Test loging with stolen token](./tests/security_tests/test_session_clone.py)
