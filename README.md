@@ -66,3 +66,4 @@ Navigate to tests folder
 - [EC32: Test loging with stolen token](./tests/security_tests/test_session_clone.py)
 - [EC33: Test login field against sql injection](./tests/security_tests/test_sql_injection.py)
 - [EC34: Test flights url against sql injection](./tests/security_tests/test_sql_injection.py)
+- [EC35 PASS. Test if users' booking are visible to other users](./tests/security_tests/test_user_data_leak.py)

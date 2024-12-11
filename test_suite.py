@@ -2,7 +2,6 @@ import sys
 import os
 
 
-
 utils_path = os.path.abspath('tests')
 utils_path_unit = os.path.abspath('tests/unit_tests')
 utils_path_integration = os.path.abspath('tests/integration_tests')
@@ -28,6 +27,7 @@ from tests.system_tests.test_booking import TestBookingSystemTest
 from test_404_requests import Test404RequestsUnitTest
 from tests.security_tests.test_session_clone import TestSessionCloneSecurityTest
 from tests.security_tests.test_sql_injection import TestSessionSQLInjectionSecurityTest
+from tests.security_tests.test_user_data_leak import TestUserDataLeak
 
 
 
@@ -78,6 +78,8 @@ def suite():
     # ECs: Testing of add to cart integration
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAddRemoveCartIntegrationTest))
 
+    # System Tests
+
     # ECs: Testing of book flight integration
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestBookingSystemTest))
 
@@ -88,6 +90,9 @@ def suite():
 
     # ECs: Testing of book flight by hacking session and user id
     test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSessionSQLInjectionSecurityTest))
+
+    # ECs: Testing of seeing book flight from user A by user B
+    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestUserDataLeak))
 
 
     # test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))

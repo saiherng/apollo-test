@@ -79,10 +79,16 @@ class ApolloSeleniumDriver():
         button.click()
         
 
-    def go_to_cart(self):
+    def _goToCart(self):
 
         cartLink = self.find_element(By.CSS_SELECTOR, 'a[href="/cart"]')
         cartLink.click()
+
+    def _goToHome(self):
+
+        homeLink = self.find_element(By.CSS_SELECTOR, 'a[href="/"]')
+        homeLink.click()
+        
 
     def book_all(self):
         
@@ -96,7 +102,7 @@ class ApolloSeleniumDriver():
 
     def go_to_profile(self):
         
-        profile = self.driver.find_element(By.XPATH,'//*[@id="root"]/footer/div/a[3]')
+        profile = self.driver.find_element(By.CSS_SELECTOR, 'a[href="/profile"]')
         profile.click()
  
 
@@ -121,7 +127,7 @@ class ApolloSeleniumDriver():
         addButton.click()
         time.sleep(1)
 
-        self.go_to_cart()
+        self._goToCart()
 
         bookButton = self.driver.find_element(By.CSS_SELECTOR, '[data-testid="book-button"]')
 
